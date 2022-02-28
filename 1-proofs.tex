@@ -1,0 +1,560 @@
+\documentclass{article}[12pt]
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm} % math symbols
+\usepackage{csquotes} % format quote blocks
+\usepackage{hyperref} % hyperlinks
+\usepackage[table]{xcolor} % tables
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    pdfborderstyle={/S/U/W 1}
+    }
+
+% title
+\title{
+    Learning Notation: Seminar One \\
+    Logic and Proof Techniques
+    }
+\author{Jack (Quan Cheng) Xie}
+\date{\today}
+
+% paragraph /indent spacing
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% mathtools equation numbering
+\counterwithin*{equation}{section}
+\renewcommand\theequation{\thesection.\arabic{equation}}
+
+% amsthm theorems formatting
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition} % unnumbered
+
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition} % unnumbered
+
+% question counter
+\newcounter{question}
+\newenvironment{question}[1][]{\refstepcounter{question}\par\textbf{Question~\thequestion. #1} \rmfamily}{}
+
+% text box for definitions and theorems
+\newcommand{\textbox}[1]{\fbox{\parbox{\textwidth}{#1}}}
+
+% bibliography formatting
+\makeatletter
+\renewcommand{\@biblabel}[1]{$\triangleright$}
+\makeatother
+
+\begin{document}
+
+    \maketitle
+    
+    \section{Mathematical Truth}
+        
+        \subsection{Statements}
+        
+            \textbox{
+                \begin{definition}[Statement]
+                \label{def:statement}
+                    A \textbf{statement} or \textbf{claim} is an expression that is either \textbf{true} ($T$) or \textbf{false} ($F$), but not both. We call $T$ and $F$ \textbf{truth values}.
+                \end{definition}
+            }
+            
+            % remove item label
+            \renewcommand{\labelitemi}{}
+            
+            We can use variables to represent a statement. For example:
+            \begin{align}
+                P &:= 1 + 1 = 2.
+                \\
+                Q &:= \text{There are infinitely many prime numbers.}
+                \\
+                R &:= \sqrt{2} \text{ is rational.}
+                \\
+                S &:= \text{All horses are the same color.}
+            \end{align}
+            
+            For the above statements, $P, Q$ are true while $R, S$ are false. The truth value of a statement can be conditional on another variable. For example,
+            \begin{align}
+                P(x) &:= \text{If $x$ is an integer, then $2x$ is even.}
+                \label{eqn:predicate-1}
+                \\
+                Q(x) &:= \text{If the integer $x$ is not $0$ or $-1$, then $x(x+1)$ is odd.}
+                \label{eqn:predicate-2}
+            \end{align}
+                
+            
+            We call $P(x)$ and $Q(x)$ \textbf{predicates}, and the collection of $x$ the \textbf{universe of discourse.} For \eqref{eqn:predicate-2}, the universe of discourse is the set of all integers.
+            
+            Not all expressions are statements according to Definition \ref{def:statement}. For example, the truth values of the following sentences cannot be determined, so they are not mathematical statements.
+            \begin{align}
+                P &:= \text{Hello world!}
+                \\
+                Q &:= \text{Is $2 + 2 = 4$?}
+                \\
+                R &:= \text{This statement is false.}
+                \\
+                S(x) &:= \text{The integer $x$ is even.}
+            \end{align}
+            
+            \textbf{Theorems, propositions, lemmas,} and \textbf{corollaries} are all statements which are proven to be true. \href{https://youtu.be/MXJ-zpJeY3E}{Terence Tao} explains the distinction between them nicely:
+            \begin{displayquote}
+                ``A lemma is an easily proved claim which is helpful for proving other propositions and theorems, but is usually not particularly interesting in its own right. A proposition is a statement which is interesting in its own right, while a theorem is a more important statement than a proposition which says something definitive on the subject, and often takes more effort to prove than a proposition or lemma. A corollary is a quick consequence of a proposition or theorem that was proven recently.''\cite{tao-book}
+            \end{displayquote}
+            
+        \subsection{Axioms}
+        
+            An \textbf{axiom} is a statement that is assumed to be true. An \textbf{axiomatic system} uses axioms, definitions, and deductions to derive the truth values of other statements with \textbf{proofs}.
+            
+            A statement is \textbf{consistent} in a axiomatic system it does not \textbf{contradict} the other axioms or proven statements. To avoid inconsistencies in a axiomatic system, its axioms should be as few and as simple as possible. Though apparently, constructing a consistent system is \href{https://youtu.be/2YIKpHxitNk?t=192}{more difficult} than it sounds.\cite{rayo-mit} See \href{https://www.youtube.com/watch?v=I4pQbo5MQOs}{more} on \href{https://www.youtube.com/watch?v=O4ndIDcDSGc}{Gödel's incompleteness theorem}.
+    
+        
+        \subsection{Conjectures}
+        
+            A \textbf{conjecture} is a statement that is believed to be true but is not proven. \href{https://youtu.be/MxiTG96QOxw}{Goldbach's conjecture} and the \href{https://youtu.be/QKHKD8bRAro}{twin prime conjecture} are two famous examples that are very simple to state, though demonstratively not simple to prove.
+            
+           \textbox{
+           \begin{conjecture}[Goldbach]
+                Every even number is the sum of two primes.
+           \end{conjecture}
+           }
+           
+           \textbox{
+           \begin{conjecture}[Twin prime]
+                There are infinitely many primes $p$ where $p + 2$ is also prime.
+           \end{conjecture}
+           }
+                
+            Other famous conjectures are the \href{https://youtu.be/d6c6uIyieoo}{ Riemann hypothesis}, the \href{https://youtu.be/YX40hbAHx3s}{ P versus NP problem} and the \href{https://www.youtube.com/watch?v=ZC7wglkBWMM}{continuum hypothesis}. The first two of these are unsolved \href{https://en.wikipedia.org/wiki/Millennium_Prize_Problems}{Millenium Prize Problems}.
+            
+        
+    \section{Logic Operation}
+        
+        \renewcommand{\labelenumi}{(\alph{enumi})}
+        
+        A \textbf{logical operator} (or \textbf{connective}) is applied to one or more statements to create a new statement. We start with the unary (i.e. operating on one statement) connective, negation.
+        
+        \subsection{Negation and truth tables}
+        
+            \textbox{
+                \begin{definition}[Negation]
+                    A \textbf{negation} $\neg$ (or $\sim$) is a logical operator on a statement that creates a statement of the opposite truth value. 
+                \end{definition}
+            }
+            
+            For example, for a statement $P$, its negation is $\neg P$, which we also call ``not P". We can also negate the negation, $\neg(\neg P)$. Their truth values can be outlined Table \ref{tab:negation}, which is a \textbf{truth table}. A truth table shows all possible truth value combinations of statements or propositional variables.
+            
+            \begin{table}[!ht]
+                \centering
+                \begin{tabular}{|c||c|c|}
+                    \hline
+                         $P$ & $\neg P$ & $\neg(\neg P)$
+                    \\ \hline\hline
+                         $T$ & $F$ & $T$
+                    \\ \hline
+                         $F$ & $T$ & $F$
+                    \\ \hline
+                \end{tabular}
+                \label{tab:negation}
+                \caption{Negation}
+            \end{table}
+            
+            
+        \subsection{Logical equivalence}
+        
+            \textbox{
+                \begin{definition}[Logical equivalence]
+                    Two statements are \textbf{logically equivalent} if they have the same values on the truth table. We express an equivalence between two statements $P$ and $Q$ as $P \equiv Q$. 
+                \end{definition}
+                }
+            
+            For example, from Table \ref{tab:negation} we can see that $P \equiv \neg(\neg P)$ since they have the same truth values.
+        
+        \subsection{Conjunction and disjunction}
+            
+        \textbox{
+            \begin{definition}[Conjunction]
+                For two statements $P$ and $Q$, we define their \textbf{conjunction} $P \land Q$ as a statement that is true if both $P$ and $Q$ are true, and false otherwise.    
+            \end{definition}
+            \begin{definition}[Disjunction]
+                We define their \textbf{disjunction} $P \lor Q$ as a statement that is true if either $P$ is true or $Q$ is true, or both are true.
+            \end{definition}
+        }
+        
+            We also call $\land$ the ``and" operator and $\lor$ the ``or" operator. The truth table is as follows:
+            \begin{table}[!ht]
+                \centering
+                \begin{tabular}{|c|c||c|c|}
+                    \hline
+                         $P$ & $Q$ & $P \land Q$ & $P \lor Q$
+                    \\ \hline\hline
+                         $T$ & $T$ & $T$ & $T$
+                    \\ \hline
+                         $T$ & $F$ & $F$ & $T$
+                    \\ \hline
+                         $F$ & $T$ & $F$ & $T$
+                    \\ \hline
+                         $F$ & $F$ & $F$ & $F$
+                    \\ \hline
+                \end{tabular}
+                \caption{Conjunction and disjunction}
+                \label{tab:junctions}
+            \end{table}
+        
+        \subsection{Quantifiers}
+            
+            \textbf{Quantifiers} connect a sequence of statements from a predicate with conjunction or disjunctions.
+            
+            \textbox{
+            \begin{definition}[Universal quantifier]
+                The \textbf{universal quantifier $\forall$} evaluates a conjunction of statements with a predicate $P(x)$ on all elements of $x$ in a set.
+                \begin{align}
+                    \forall x \in \{x_1, x_2, ...\},\; P(x) \ \equiv \ 
+                    P(x_1) \land P(x_2) \land ...
+                \end{align}
+            \end{definition}
+            }
+            
+            For the above we read, ``\textbf{For just have to all} $x$ in the set $\{x_1, x_2, ...\}$, $P(x)$ is true." Sometimes we say \textbf{``for every"} or \textbf{``for any"} instead of ``for all"
+                
+            \textbox{
+            \begin{definition}[Existential quantifier]
+                The \textbf{existential quantifier $\exists$} creates a disjunction of $P(x)$ for all elements of $x$ in a set.
+                \begin{align}
+                    \exists x \in \{x_1, x_2, ...\},\; P(x) \ \equiv \ 
+                    P(x_1) \lor P(x_2) \lor ...
+                \end{align}
+            \end{definition}
+            }
+            
+            For the above we read, ``\textbf{There exists} a $x$ in the set $\{x_1, x_2, ...\}$ where $P(x)$ is true." Sometimes we say \textbf{``there is"} instead of ``there exists."
+            
+            \newcommand{\R}{\mathbb{R}}
+            Consider the following statement: $\exists a \in \R, \ \forall x \in \R, \ a x = x$. What is $a$? Also, $\exists b \in \R, \ \forall x \in \R, \ b x = b$. What is $b$?
+            
+            
+        \subsection{De Morgan's laws}
+            Two famous identities in propositional logic are De Morgan's Laws.
+            
+            \textbox{
+            \begin{theorem}[De Morgan's laws]
+                For two statements $P$ and $Q$,
+                \begin{align}
+                    P \land Q &\equiv \neg (\neg P \lor \neg Q), \label{demorg1}\\
+                    P \lor Q  &\equiv \neg (\neg P \land \neg Q).
+                    \label{demorg2}
+                \end{align}
+            \end{theorem}
+            }
+            
+            We will prove the first result \eqref{demorg1} and leave \eqref{demorg2} as an exercise.
+            
+            \begin{proof}
+                To proof that two statements are equivalent, we just have to show that they have the same values on the truth table.
+                
+                \begin{table}[!ht]
+                    \centering
+                    \begin{tabular}{|c|c||c||c|c||c||c|}
+                        \hline
+                        (i) & (ii) & (iii) & (iv) &
+                        (v) & (vi) & (vii)
+                        \\
+                             $P$ & $Q$ &
+                             $P \land Q$ &
+                             $\neg P$ & $\neg Q$ &
+                             $(\neg P \lor \neg Q)$ &
+                             $\neg(\neg P \lor \neg Q)$
+                        \\ \hline\hline
+                             $T$ & $T$ & $T$ &
+                             $F$ & $F$ & $F$ & $T$
+                        \\ \hline
+                             $T$ & $F$ & $F$ &
+                             $F$ & $T$ & $T$ & $F$
+                        \\ \hline
+                             $F$ & $T$ & $F$ &
+                             $T$ & $F$ & $T$ & $F$
+                        \\ \hline
+                             $F$ & $F$ & $F$ &
+                             $T$ & $T$ & $T$ & $F$
+                        \\ \hline
+                    \end{tabular}
+                    \caption{First De Morgan's Law}
+                    \label{tab:de-morgans-law-1}
+                \end{table}
+                
+                It can be seen from Table \ref{tab:de-morgans-law-1} that $p \land Q$ in column (iii) and $\neg(\neg P \lor \neg Q)$ in column (vii) have the same truth values for all value combinations of $P, Q$. Therefore they are logically equivalent by definition.
+            \end{proof}
+            
+            \begin{question}
+                Prove the second de Morgan's law \eqref{demorg2}, that $P \lor Q  \equiv \neg (\neg P \land \neg Q)$.
+            \end{question}
+            
+            
+        \subsection{Conditional and biconditional statements}
+        
+            
+            \textbox{
+            \begin{definition}[Conditional statement]
+                For two statements $P$ and $Q$, we can form a new statement
+                \begin{align}
+                    R := \text{If $P$ (is true), then $Q$ (is true)},
+                \end{align}
+                where $R$ is a true statement if $Q$ is true under the condition that $P$ is true. We can also say that ``$P$ implies $Q$", or ``$Q$ if $P$", or write $P \implies Q$ (or $P \rightarrow Q$).
+            \end{definition}
+            }
+            
+            If $P \implies Q$, we call $P$ the \textbf{sufficient condition} for $Q$, and $Q$ the \textbf{necessary condition} for $P$. 
+            
+            If the reverse implication $Q \implies P$ is true, we can also write $P \impliedby Q$, which we also call the \textbf{converse} of $P \implies Q$. Then we can also say that \textbf{$P$ only if $Q$.}
+            
+            \textbox{
+            \begin{definition}[Biconditional statement]
+                For two statements $P$ and $Q$, if both $P \implies Q$ and $P \impliedby Q$, then we say that \textbf{if and only if $P$, then $Q$.} We also call this a biconditional statement, and write it as $P \iff Q$ or $P \longleftrightarrow Q$. A biconditional statement is equivalent to logical equivalence.
+            \end{definition}
+            }
+            
+            The truth table for conditional and bi-conditional statements is as follows:\footnote{The third case where $F \implies T$ is true is called ``vacuous truth".}
+            \begin{table}[!ht]
+                    \centering
+                    \begin{tabular}{|c|c||c|c||c|}
+                        \hline
+                             $P$ & $Q$ & 
+                             $P \implies Q$ & 
+                             $P \impliedby Q$ & 
+                             $P \iff Q$
+                        \\ \hline\hline
+                             $T$ & $T$ & 
+                             $T$ & $T$ & $T$
+                        \\ \hline
+                             $T$ & $F$ & 
+                             $F$ & $T$ & $F$
+                        \\ \hline
+                             $F$ & $T$ & 
+                             $T$ & $F$ & $F$
+                        \\ \hline
+                             $F$ & $F$ & 
+                             $T$ & $T$ & $T$
+                        \\ \hline
+                    \end{tabular}
+                    \label{tab:cond}
+                \end{table}
+            
+            \begin{question}
+                Show that $P \implies Q$ is logically equivalent to $\neg P \lor (P \land Q)$.
+            \end{question}
+            \begin{question}
+                Express $P \iff Q$ as negations, conjunctions, and disjunctions of $P$ and $Q$.
+            \end{question}
+            
+            \begin{question}
+                Which of the following statements are true?
+                \begin{multicols}{2}
+                    \begin{enumerate}
+                        \item
+                        $x < 3 \implies x \le 4$
+                        
+                        \item
+                        $x < 3 \impliedby x \le 4$
+                        
+                        \item
+                        $x > y \implies x \ge y$
+                        
+                        \item
+                        $x > y \impliedby x \ge y$
+                        
+                        \item
+                        $(|x| < y) \land (y > 0) \iff (x > -y) \land (x < y)$
+                        
+                        \item
+                        $(|x| < y) \land (y > 0) \iff (x > -y) \lor (x < y)$
+                        
+                        \item
+                        $(|x| > y) \land (y > 0) \iff (x > y) \land (x < -y)$
+                        
+                        \item
+                        $(|x| > y) \land (y > 0) \iff (x > y) \lor (x < -y)$
+                    \end{enumerate}
+                \end{multicols}
+            \end{question}
+        
+        \subsection{Tautology}
+        \textbox{
+            \begin{definition}
+                A \textbf{tautology} is a statement that is always true.
+            \end{definition}
+            
+            \begin{definition}
+                A \textbf{contradiction} is a statement that is always false.
+            \end{definition}
+            }
+            
+            For example, $P \lor \neg P$ is a tautology, while $P \land \neg P$ is a contradiction.
+            \begin{table}[!ht]
+                \centering
+                \begin{tabular}{|c|c|c|c|}
+                     \hline
+                     $P$ & $\neg P$ & 
+                     $P \lor \neg P$ &
+                     $P \land \neg$ P
+                     \\ \hline\hline
+                     T & F & 
+                     T & F
+                     \\ \hline
+                     F & T & 
+                     T & F
+                     \\ \hline
+                \end{tabular}
+                \caption{A tautology and contradiction}
+            \end{table}
+            
+            \begin{question}
+                Is each of the following a tautology, contradiction, or neither?
+                \begin{multicols}{2}
+                    \begin{enumerate}
+                        \item
+                        $(x < 0) \lor (x > 0)$
+                        
+                        \item
+                        $(x < 0) \land (x > 0)$
+                        
+                        \item
+                        $(x < y) \land (x \ge y)$
+                        
+                        \item
+                        $[(P \implies Q) \land (\neg P)] \implies  (Q \equiv T)$
+                        
+                        \item
+                        $[(P \implies Q) \land (\neg P)] \implies  Q$
+                        
+                        \item
+                        $[(P \implies Q) \land P] \implies Q$
+                        
+                        \item
+                        $[(P \implies Q) \land (\neg Q)] \implies  \neg P$
+                        
+                        \item
+                        $[(P \lor Q) \land (\neg Q)] \implies  \neg P$
+                        
+                        \item
+                        $(P \land Q) \iff Q$
+                        
+                        \item
+                        $Q \iff (P \lor Q)$
+                        
+                    \end{enumerate}
+                \end{multicols}
+                
+            \end{question}
+            
+            \begin{question}
+                Verify that the following statements are tautologies.
+                
+                \begin{multicols}{2}
+                \begin{enumerate}
+                    \item
+                    $P \iff \neg (\neg P)$
+                    % Double negation
+                    
+                    \item 
+                    $P \lor Q  \iff \neg (\neg P \land \neg Q)$
+                    % De Morgan's law
+                    
+                    \item
+                    $P \land Q \iff \neg (\neg P \lor \neg Q)$
+                    % De Morgan's law
+                    
+                    \item
+                    $(P \implies Q) \iff (\neg Q \implies \neg P)$
+                    % Contraposition
+                    
+                    \item
+                    $(\neg P \implies Q) \land (\neg P \implies \neg Q) \iff P$
+                    % Reductio ad absurdum
+                    
+                    \item
+                    $((A \implies B) \land (B \implies C)) \implies (A \implies C)$
+                    % Syllogism
+                    
+                    \item
+                    $[(A \lor B) \land (A \implies C) \lor (B \implies C)] \implies C$
+                    % proof by cases
+
+                \end{enumerate}
+                \end{multicols}
+                
+            \end{question}
+            
+            % \begin{table}[!ht]
+            %     \centering
+            %     \begin{tabular}{|c|c||c|c||c|}
+            %     \hline
+            %          $P$ & $Q$ & 
+            %          $\neg P \implies Q$ & 
+            %          $\neg P \implies \neg Q$ &
+            %          $(\neg P \implies Q) \land (\neg P \implies \neg Q)$
+            %     \\ \hline\hline
+            %          T & T & 
+            %          T & T & T
+            %     \\ \hline
+            %          T & F & 
+            %          T & T & T
+            %     \\ \hline
+            %          F & T &
+            %          T & F & F
+            %     \\ \hline
+            %          F & F &
+            %          F & T & F
+            %     \\ \hline
+            %     \end{tabular}
+            % \end{table}
+            
+    \section{Proof Techniques}
+        
+        
+        \subsection{Direct proof}
+        
+        
+        \subsection{Proof by contrapositive}
+        
+        
+        \subsection{Proof by contradiction}
+            
+        \subsection{Proof by induction}
+
+    \begin{thebibliography}{9}
+        
+        \bibitem{book-of-proof}
+        Hammack, Richard, (2018). \emph{Book of Proof, third edition}. Richard Hammack. \url{https://www.people.vcu.edu/~rhammack/BookOfProof/}
+        
+        \bibitem{rayo-mit}
+        Rayo, Agustin, (2020). \emph{About this class}, lecture. Paradox and Infinity. MIT Open Learning Library. \url{https://openlearninglibrary.mit.edu/courses/course-v1:MITx+24.118x+2T2020/course}
+        
+        \bibitem{mit-compsci-math}
+        Leighton, Tom, \& Dijk, Marten. (2010, Fall) \emph{Lecture 1}. 6.042J Mathematics for Computer Science. Massachusetts Institute of Technology: MIT OpenCourseWare. \url{https://youtu.be/L3LMbpZIKhQ}
+        
+        \bibitem{libretexts-logic}
+        Statements and Logical Operators. (2021, September 5). Grand Valley State University. \url{https://math.libretexts.org/@go/page/7039}
+        
+        \bibitem{tao-notes}
+        Tao, Terence. (2003). \emph{Week 1}, lecture notes. Honors Analysis Math131AH. University of California, Los Angeles. \url{https://www.math.ucla.edu/~tao/resource/general/131ah.1.03w/}
+        
+        \bibitem{tao-book}
+        Tao, Terence. (2016). \emph{Analysis I, third edition}. Springer Singapore.
+        
+    \end{thebibliography}
+    % \bibliographystyle{plain}
+    % \bibliography{1-sets.bib}
+    
+\end{document}
