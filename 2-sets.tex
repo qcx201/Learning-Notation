@@ -52,12 +52,8 @@
 \newtheorem{definition}{Definition}
 \newtheorem*{definition*}{Definition} % unnumbered
 
-% question counter
-\newcounter{question}
-
-\newenvironment{question}[1][]{\refstepcounter{question}\par\noindent\textbf{Question~\thequestion. #1}\label{q:\thequestion} \rmfamily}{}
-
-\newcommand\questionnum{\refstepcounter{question}\thequestion}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{exercise*}{Exercise} % unnumbered
 
 
 % special symobls
@@ -114,9 +110,9 @@
             \end{equation}
             by ignoring the repeated element $a$.
         
-            \begin{question}
+            \begin{exercise}
                 For a set $A$, does $a_1, a_2, a_3 \in A$ imply $A = \{a_1, a_2, a_3\}?$
-            \end{question}
+            \end{exercise}
             
             
         \subsection{Set equality and element order}
@@ -154,9 +150,9 @@
                 = \{\{\}, a, b, c, 1, 2, 3, \{\{\}, \{a, b, c\}, \{1, 2, 3\}\}\}.
             \end{align}
             
-            \begin{question}
+            \begin{exercise}
                 What are $|D|$, $|\varnothing|$, and $|\{\varnothing\}|$?
-            \end{question}
+            \end{exercise}
         
         \subsection{Number systems}
             
@@ -187,7 +183,7 @@
             
             \textbox{
                 \begin{proposition}
-                    $\sqrt{2}$ is irrational.
+                    The number $\sqrt{2}$ is irrational.
                 \end{proposition}
             }
             \begin{proof}
@@ -216,9 +212,9 @@
                 &= \left\{ x + y i \; : \; x, y \in \R, \; i = \sqrt{-1} \label{complex} \right\}
             \end{align}
             
-            \begin{question}
+            \begin{exercise}
                 Show that $\sqrt{3}$ is irrational.
-            \end{question}
+            \end{exercise}
             
         \subsection{Set builder notation}
             
@@ -229,15 +225,23 @@
             
             We sometimes call this set $\R^+$. The ``$:$" symbol can be read \textbf{``where"} or \textbf{``such that."} Sometimes we use ``$|$" instead of ``$:$". The right hand side of \eqref{R-plus} is read, "the set of all elements $x$ in the reals where $x$ is greater than zero."
             
-            \begin{question}
+            \begin{exercise}
                 Construct $\Z$ and $\Q$ from $\N$ with set builder notation.
-            \end{question}
+            \end{exercise}
         
         \subsection{Tuples and Cartesian product}
         
+            
             \textbox{
+            \begin{definition}[Tuple]
+                Informally, a \textbf{tuple} is a finite, ordered list (or sequence) of elements. A \textbf{n-tuple} is a tuple of $n$ elements.
+                \begin{align}
+                    (a_1, a_2, a_3, ..., a_n).
+                \end{align}
+            \end{definition}
+            
             \begin{definition}[Cartesian product]
-                The \textbf{Cartesian product} of two sets $A$ and $B$ is the set of all pairs (or tuples) of elements $(a, b)$ from $a \in A$ and $b \in B$.
+                The \textbf{Cartesian product} of two sets $A$ and $B$ is the set of all pairs (or 2-tuples) of elements $(a, b)$ from $a \in A$ and $b \in B$.
                 \begin{align}
                     C = A \times B = \{(a, b) : a \in A, b \in B\}
                 \end{align}
@@ -250,16 +254,14 @@
             \end{definition}
             }
             
-            
-            
         \subsection{Russell's paradox}
         
             So far we have allowed pretty much anything to be a member of a set, including other sets. However, if we are not careful with our formulation of what sets are, we can run into some problems. The logician Bertrand Russell came up with a famous problem that arises from loose definitions of sets.
             
             \textbox{
-                \begin{claim}[Russell's paradox]
+                \begin{proposition}[Russell's paradox]
                     Let $R = \{S : S \not\in S\}$, the set of all sets that are not members of themselves. Then $R \in R \iff R \not\in R$.
-                \end{claim}
+                \end{proposition}
             }
             \begin{proof}
                 We have that $R \in R \implies R \not\in R$, since if $S = R \in R$, then by its membership in $R$ it must satisfy the condition of being a set $S \not\in S$ that is not a member of itself, which means $R \not\in R$.
@@ -399,13 +401,13 @@
             
             For example, $\PS(\{a, b\}) = \{\varnothing, \{a\}, \{b\}, \{a, b\}\}$.
             
-            \begin{question}
+            \begin{exercise}
                 What is $\PS(\varnothing)$? What is $\PS(\PS(\varnothing))$ and $\PS(\PS(\PS(\varnothing)))$?
-            \end{question}
+            \end{exercise}
             
-            \begin{question}
+            \begin{exercise}
                 Prove by induction that $|\PS(S)| = 2^{|S|}$ for any finite set $S$.
-            \end{question}
+            \end{exercise}
         
     \section{Functions}
         
@@ -499,9 +501,10 @@
                     Two sets are \textbf{equicardinal} if there exists a bijective function that maps one to the other.
                 \end{definition}
             }
-            \begin{question}
+            
+            \begin{exercise}
                 Are set of all natural numbers $\N$ and the set of all even numbers equicardinal? What about the naturals and odd numbers?
-            \end{question}
+            \end{exercise}
         
     
     \section{Countability and infinite sets}
@@ -573,107 +576,71 @@
             \end{itemize}
             
             We can show that $\{0, 1\}^{\infty}$ is equicardinal to [0, 1] by representing them as the binary decimals:
-            \
             
-        
-        \begin{question}
-            Show that the cardinality of $[0, 1]$ is equal to that of any interval $[a, b]$.
-        \end{question}
-        
-        \begin{question}
-            Show that $\R$ and $\R^+$ are equicardinal.
-        \end{question}
-        
-        \begin{question}
-            See appendix \eqref{app:interval-cardinalities} for proof that the cardinality of $[0, 1]$ is equal to that of $[0, 1)$. Show that $[0, 1]$ is equicardinal to $\R$.
-        \end{question}
-    
+            
+            \begin{exercise}
+                Show that the cardinality of $[0, 1]$ is equal to that of any interval $[a, b]$.
+            \end{exercise}
+            
+            \begin{exercise}
+                Show that $\R$ and $\R^+$ are equicardinal.
+            \end{exercise}
+            
+            \begin{exercise}
+                See appendix \eqref{app:interval-cardinalities} for proof that the intervals $[0, 1]$, $[0, 1)$, $(0, 1]$, and $(0, 1)$ are all equicardinal. Show that $[0, 1]$ is equicardinal to $\R$.
+            \end{exercise}
     
     \appendix
-    
     \section{Appendix}
         
-        \subsection{Equicardinality of closed and half-open intervals}\label{app:interval-cardinalities}
+        \subsection{Equicardinality of intervals}\label{app:interval-cardinalities}
+        
         \textbox{
             \begin{proposition}
-                The closed interval $[0, 1]$ is equicardinal to the half-open interval $[0, 1)$.
+                The intervals $(0, 1)$ , $[0, 1)$, $(0, 1]$, and $[0, 1]$ are equicardinal.
             \end{proposition}
         }
+        
         \begin{proof}
-            We need to show there exists a bijection $f : [0, 1] \to [0, 1)$. Let $A$ and $B$ be two countably infinite sets where
+            We can show there exist bijective functions from $(0, 1)$ to $[0, 1), (0, 1],$ and $[0, 1]$ by Hilbert's Hotel. Let $H = \left\{\frac{1}{n} : n \in \N, n > 1 \right\}$.
+            
+            Define $f_1 : (0, 1) \to [0, 1)$ as
             \begin{align}
-                A
-                &= \left\{\frac{1}{n} : n \in \N,\; n \ge 1 \right\}
-                = \left\{1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, ... \right\},
-                \\
-                B
-                &= \left\{\frac{1}{n} : n \in \N,\; n > 1 \right\}
-                = \left\{\frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \frac{1}{5}, ... \right\}.
+                f_1(x) = \begin{cases}
+                    0,              & x = \frac{1}{2}
+                    \\
+                    \frac{1}{n-1},  & x \in \left\{\frac{1}{n} : n \in \N, n > 2\right\}
+                    \\
+                    x,              & x \not\in H.
+                \end{cases}
             \end{align}
             
-            Note that $A \subset [0, 1]$ and $B \subset [0, 1)$. Define $h : A \to B$ as
+            Define $f_2 : (0, 1) \to (0, 1]$ as
             \begin{align}
-                h\left(\frac{1}{n}\right) = \frac{1}{n+1},
+                f_2(x) = \begin{cases}
+                    1,              & x = \frac{1}{2}
+                    \\
+                    \frac{1}{n-1},  & x \in \left\{\frac{1}{n} : n \in \N, n > 2\right\}
+                    \\
+                    x,              & x \not\in H.
+                \end{cases}
             \end{align}
             
-            which is a bijection. Define $f : [0, 1] \to [0, 1)$ as
+            Define $f_3 : (0, 1) \to [0, 1]$ as
             \begin{align}
-                f(x) = \begin{cases}
-                    h(x)    ,&   x \in A \\
-                    x       ,&   x \not\in A
-                \end{cases}.
+                f_3(x) = \begin{cases}
+                    0,              & x = \frac{1}{2}
+                    \\
+                    1,              & x = \frac{1}{3}
+                    \\
+                    \frac{1}{n-2},  & x \in \left\{\frac{1}{n} : n \in \N, n > 3\right\}
+                    \\
+                    x,              & x \not\in H.
+                \end{cases}
             \end{align}
             
-            Then $f$ is a one-to-one correspondence between between $A$ and $B$ (when $x \in A$) and also between $[0, 1] \setminus A$ and $[0, 1) \setminus B$ (when $x \not\in A$). Thus $f : [0, 1] \to [0, 1)$ is a bijection.
-            
-        \end{proof}
-    
-    
-    % \section{Questions}
-    
-    % \setcounter{question}{0}
-    
-    % \subsection*{Question \questionnum}
-    %     For a set $A$, does $a_1, a_2, a_3 \in A$ imply $A = \{a_1, a_2, a_3\}?$
-    
-    
-    % \subsection*{Question \questionnum}
-    %     What are $|D|$, $|\varnothing|$, and $|\{\varnothing\}|$?
-    %     \begin{align*}
-    %         A &= \{a, b, c\}, \quad
-    %         B = \{1, 2, 3\},
-    %         \\
-    %         C &= \{\varnothing, A, B\}, \quad
-    %         D = \{\varnothing, a, b, c, 1, 2, 3, C\}.
-    %     \end{align*}
-    
-    
-    % \subsection*{Question \questionnum}
-    %     Show that $\sqrt{3}$ is irrational.
-    
-    
-    % \subsection*{Question \questionnum}
-    %     Construct $\Z$ and $\Q$ from $\N$ with set builder notation.
-    
-    
-    % \subsection*{Question \questionnum}
-    %     What is $\PS(\varnothing)$? What is $\PS(\PS(\varnothing))$ and $\PS(\PS(\PS(\varnothing)))$?
-    
-    % \subsection*{Question \questionnum}
-    %     Prove by induction that $|\PS(S)| = 2^{|S|}$ for any finite set $S$.
-    
-    % \subsection*{Question \questionnum}
-    %     Show that $\R$ and $\R^+$ are equicardinal.
-    
-    
-    % \subsection*{Question \questionnum}
-    %     Show that the cardinality of $[0, 1]$ is equal to that of any interval $[a, b]$.
-    
-    
-    % \subsection*{Question \questionnum}
-    %     See appendix \eqref{app:interval-cardinalities} for proof that the cardinality of $[0, 1]$ is equal to that of $[0, 1)$. Show that $[0, 1]$ is equicardinal to $\R$.
-    
-
+        Each of these functions is a bijection. Then the open interval is equicardinal to each of the other type of interval, which means they are all equicardinal.
+    \end{proof}
 
     \begin{thebibliography}{9}
         
