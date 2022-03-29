@@ -1,0 +1,277 @@
+\documentclass{article}[12pt]
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm} % math symbols
+
+% title
+\title{Learning Notation: Seminar Two \\ Set Theory}
+\author{Jack (Quan Cheng) Xie}
+\date{\today}
+
+% paragraph /indent spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% mathtools equation numbering
+\counterwithin*{equation}{section}
+\renewcommand\theequation{\thesection.\arabic{equation}}
+
+% amsthm theorems formatting
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture} % unnumbered
+
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition} 
+
+\newtheorem{claim}{Claim}
+\newtheorem*{claim*}{Claim}
+
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition} % unnumbered
+
+\newtheorem{exercise}{Exercise}
+\newtheorem*{exercise*}{Exercise} % unnumbered
+
+
+% special symobls
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PS}{\mathcal{P}}
+
+% text box for definitions and theorems
+\newcommand{\textbox}[1]{\fbox{\parbox{\textwidth}{#1}}\\\\}
+
+\newenvironment{solution}[1][]
+    {\par\medskip
+    \noindent \textbf{Solution~\theexercise. #1} \rmfamily
+    }
+    {\medskip}
+
+
+% \par\medskip\noindent \textbf{Solution~\theexercise. #1} \rmfamily}
+
+
+
+\begin{document}
+
+    \section*{Exercises}
+        
+        \begin{exercise}
+            For a set $A$, does $a_1, a_2, a_3 \in A$ imply $A = \{a_1, a_2, a_3\}?$
+        \end{exercise}
+        
+        \textbox{\textbf{Solution \theexercise.}
+            No. For example, $A = \{a_1, a_2, a_3, a_4\}$.
+        }
+            
+        \begin{exercise}
+            Consider the following sets:
+            \begin{align*}
+                A &= \{a, b, c\}, \quad B = \{1, 2, 3\},
+                \\
+                C &= \{\varnothing, A, B\}, \quad
+                D = \{\varnothing, a, b, c, 1, 2, 3, C\}.
+            \end{align*}
+            What are $|D|$, $|\varnothing|$, and $|\{\varnothing\}|$?
+        \end{exercise}
+
+        \textbox{\textbf{Solution \theexercise.}
+            We have that $|D| = 8$, $|\varnothing| = 0,$ and $|\{\varnothing\}| = 1$.
+        }
+        
+        
+        % \begin{exercise}
+        %     Show that $\sqrt{3}$ is irrational.
+        % \end{exercise}
+        
+        % \textbox{\textbf{Solution \theexercise.}
+        % \begin{proposition*}
+        %     $\sqrt{3}$ is irrational.
+        % \end{proposition*}
+        % }
+        
+        % \begin{proof}
+        %     By contradiction, suppose $\sqrt{3}$ is rational. Then there exists $m, n \in \N$ without common factors where
+        %     \begin{align}
+        %         \sqrt{3} = \frac{m}{n}.
+        %     \end{align}
+        %     Then we have that
+        %     \begin{align}
+        %         3 = \frac{m^2}{n^2} \implies m^2 = 3 n^2 \implies m = 3p, \ p = \frac{n^2}{3}
+        %     \end{align}
+        %     which means 3 is a factor of $m$. However,
+        %     \begin{align}
+        %         p = \frac{n^2}{3} \implies n^2 = 3p \implies n = 3q,
+        %     \end{align}
+        %     which implies 3 is also a factor of $n$. Then 3 cannot be both a factor of $m$ and $n$ if they have no common factors.
+        % \end{proof}
+        % }
+    
+        
+        
+        \begin{exercise}
+            Construct $\Z$ and $\Q$ from $\N$ with set builder notation.
+        \end{exercise}
+    
+        \textbox{\textbf{Solution \theexercise.}
+            \begin{align}
+                \Z &= \{n : n \in \N\} \cup \{-n : n \in \N\},
+                \\
+                \Q &= \left\{\frac{m}{n}: m, n \in \N \right\} \cup \left\{-\frac{m}{n}: m, n \in \N \right\}
+            \end{align}
+        }
+            
+            
+        \begin{exercise}
+            What is $\PS(\varnothing)$? What is $\PS(\PS(\varnothing))$ and $\PS(\PS(\PS(\varnothing)))$?
+        \end{exercise}
+        
+        \textbox{\textbf{Solution \theexercise.}
+            \begin{align}
+                \PS(\varnothing) &= \{\varnothing\},
+                \\
+                \PS(\PS(\varnothing)) &= \{\varnothing, \{\varnothing\}\}
+                \\
+                \PS(\PS(\PS(\varnothing))) &= \{\varnothing, \{\varnothing\}, \{\{\varnothing\}\}, \{\varnothing, \{\varnothing\}\}\}
+            \end{align}
+        }
+    
+        \newpage
+        \begin{exercise}
+            Prove by induction that $|\PS(S)| = 2^{|S|}$ for any finite set $S$.
+        \end{exercise}
+        
+        \textbox{\textbf{Solution \theexercise.}
+            \begin{proposition*}
+                $|\PS(S)| = 2^{|S|}$ for any finite set $S$.
+            \end{proposition*}
+            
+            \begin{proof}
+                Let $\{S_n\}_{n=0}^\infty$ be a sequence of sets where $|S_n| = n$ and $S_{n} \subset S_{n+1}$. Denote the elements of $S_n = \{e_1, ..., e_n\}$.
+                
+                \textbf{Base case:} For $n=0$, we can show that $|\PS(S_0)| = 2^0 = 1$. By definition of the empty set that it contains no members, $S_0 = \varnothing$. Then
+                    \begin{align}
+                        n = 1 \implies S_n = S_0 = \varnothing \implies \PS(S_n) = \{\varnothing\} \implies |\PS(S_n)| = 1.
+                    \end{align}
+                    
+                \textbf{Inductive step:} We want to show that $|\PS(S_n)| = 2^{n}  \implies |\PS(S_{n+1})| = 2^{n + 1}$.
+                \begin{align}
+                    \PS(S_{n+1})
+                    &= \PS(S_n \; \cup \; \{e_{n+1}\})
+                    \\
+                    &= \PS(S_n) \; \dot\cup \; \{ A : A \subseteq S_{n+1} \land \{e_{n+1}\} \subseteq A \}
+                    \\
+                    &= \PS(S_n) \; \dot\cup \; \{ A \; \dot\cup \;\{e_{n+1}\} : A \subseteq \PS(S_n) \}
+                \end{align}
+                
+                Note that $| \{ A \; \dot\cup \;\{e_{n+1}\} : A \subseteq \PS(S_n) \} | = |\PS(S_n)| = 2^n$ by the induction hypothesis. Then
+                \begin{align}
+                    | \PS(S_{n+1}) |
+                    &= | \PS(S_n) | + | \{ A \; \dot\cup \;\{n+1\} : A \subseteq \PS(S_n) \} | \\
+                    &= 2^n + 2^n = 2^{n+1},
+                \end{align}
+                which completes the induction proof.
+            \end{proof}
+        }
+    
+        
+        \begin{exercise}
+            Are set of all natural numbers $\N$ and the set of all even numbers equicardinal? What about the naturals and odd numbers?
+        \end{exercise}
+    
+        \textbox{\textbf{Solution \theexercise.}
+            The set of all even numbers, odd numbers, and $\N$ are all equicardinal. \\
+            
+            For example, $f(n) = 2n$ is a bijection from $\N$ to the even numbers, which means the naturals are equicardinal to the set of even numbers (even though the even numbers is a proper subset!).
+        }
+    
+        
+    
+        \begin{exercise}
+            Show that the cardinality of $[0, 1]$ is equal to that of any interval $[a, b]$.
+        \end{exercise}
+        
+        \textbox{\textbf{Solution \theexercise.}
+            For any $a, b \in \R$, $f(x) = a + (b-a)x$ is a bijection from $[0, 1] \to [a, b]$.
+        }
+    
+    
+        \begin{exercise}
+            Show that $\R$ and $\R^+$ are equicardinal.
+        \end{exercise}
+    
+        \textbox{\textbf{Solution \theexercise.}
+            The monotonic function $f(x) = \ln x$ is a bijection from $\R^{+} \to \R$.
+        }
+    
+        
+        
+        \begin{exercise}
+            See appendix \eqref{app:interval-cardinalities} for proof that the intervals $[0, 1]$, $[0, 1)$, $(0, 1]$, and $(0, 1)$ are all equicardinal. Show that $[0, 1]$ is equicardinal to $\R$.
+        \end{exercise}
+    
+        \textbox{\textbf{Solution \theexercise.}
+            We showed that $[0, 1]$ and $(0, 1)$ are equicardinal in appendix \eqref{app:interval-cardinalities}. We showed that $\R$ and $\R^+$ are equicardinal in the previous exercise. \\
+            
+            Since $f(x) = -\ln x$ is a bijection $f : (0, 1) \to \R^{+}$, the two sets are also equicardinal. Then $[0, 1]$, $(0, 1)$, $\R^+$, and $\R$ are all equicardinal.
+        }
+
+
+    \appendix
+    \section{Appendix}
+        
+    \subsection{Equicardinality of intervals}\label{app:interval-cardinalities}
+    
+        \begin{proposition*}
+            The intervals $(0, 1)$ , $[0, 1)$, $(0, 1]$, and $[0, 1]$ are all equicardinal.
+        \end{proposition*}
+    
+    
+        \begin{proof}
+            We can show there exist bijective functions from $(0, 1)$ to $[0, 1), (0, 1],$ and $[0, 1]$ by Hilbert's Hotel. Let $H = \left\{\frac{1}{n} : n \in \N, n > 1 \right\}$.
+            
+            Define $f_1 : (0, 1) \to [0, 1)$ as
+            \begin{align}
+                f_1(x) = \begin{cases}
+                    0,              & x = \frac{1}{2}
+                    \\
+                    \frac{1}{n-1},  & x \in \left\{\frac{1}{n} : n \in \N, n > 2\right\}
+                    \\
+                    x,              & x \not\in H.
+                \end{cases}
+            \end{align}
+            
+            Define $f_2 : (0, 1) \to (0, 1]$ as
+            \begin{align}
+                f_2(x) = \begin{cases}
+                    1,              & x = \frac{1}{2}
+                    \\
+                    \frac{1}{n-1},  & x \in \left\{\frac{1}{n} : n \in \N, n > 2\right\}
+                    \\
+                    x,              & x \not\in H.
+                \end{cases}
+            \end{align}
+            
+            Define $f_3 : (0, 1) \to [0, 1]$ as
+            \begin{align}
+                f_3(x) = \begin{cases}
+                    0,              & x = \frac{1}{2}
+                    \\
+                    1,              & x = \frac{1}{3}
+                    \\
+                    \frac{1}{n-2},  & x \in \left\{\frac{1}{n} : n \in \N, n > 3\right\}
+                    \\
+                    x,              & x \not\in H.
+                \end{cases}
+            \end{align}
+                
+            Each of these functions is a bijection. Then the open interval is equicardinal to each of the other type of interval, which means they are all equicardinal.
+        \end{proof}
+        
+\end{document}

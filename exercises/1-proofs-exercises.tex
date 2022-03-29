@@ -1,0 +1,455 @@
+\documentclass{article}[12pt]
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm} % math symbols
+\usepackage{hyperref} % hyperlinks
+\usepackage{multicol}
+
+% title
+\title{
+    Learning Notation: Seminar One Exercises \\
+    Logic and Proof Techniques
+    \vspace{-2em}
+    }
+\author{}
+\date{March 7, 2022}
+
+% paragraph /indent spacing
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% mathtools equation numbering
+\counterwithin*{equation}{section}
+\renewcommand\theequation{\thesection.\arabic{equation}}
+
+% amsthm theorems formatting
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem*{proposition*}{Proposition} % unnumbered
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{definition*}{Definition} % unnumbered
+
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{exercise*}{Exercise} % unnumbered
+
+
+% special symobls
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PS}{\mathcal{P}}
+
+% text box for definitions and theorems
+\newcommand{\textbox}[1]{\fbox{\parbox{\textwidth}{#1}}}
+
+
+\begin{document}
+
+    \maketitle
+    
+    \renewcommand{\labelenumi}{(\alph{enumi})}
+    
+    
+    \setcounter{section}{1}
+    \section{Predicate Logic}
+            
+    \subsection{Conjunction and disjunction}
+    
+        \begin{exercise}
+            Verify these algebraic properties with truth tables.
+            \begin{align}
+                \text{Commutativity:}\quad&&
+                    x \land y
+                    \equiv
+                    y \land x,
+                    \quad&
+                    x \lor y
+                    \equiv
+                    y \lor x.
+                \\\text{Associativity:}\quad&&
+                    x \land (y \land z)
+                    \equiv
+                    (x \land y) \land z,
+                    \quad&
+                    x \lor (y \lor z)
+                    \equiv
+                    (x \lor y) \lor z.
+                \\\text{Distributivity:}\quad&&
+                    x \land (y \lor z)
+                    \equiv
+                    (x \land y) \lor (x \land z),
+                    \quad&
+                    x \lor (y \land z)
+                    \equiv
+                    (x \lor y) \land (x \lor z).
+                \\\text{Identities:}\quad&&
+                    x \land T \equiv x,
+                    \quad&
+                    x \lor F \equiv x.
+                \\\text{Annihilators:}\quad&&
+                    x \land F \equiv F,
+                    \quad&
+                    x \lor T \equiv T.
+            \end{align}
+        \end{exercise}
+        
+    \subsection{De Morgan's laws}
+    
+        \begin{exercise}
+            Prove the second de Morgan's law, that $P \lor Q  \equiv \neg (\neg P \land \neg Q)$.
+        \end{exercise}
+    
+    \subsection{Quantifiers}
+        
+        \begin{exercise}
+            The set of natural numbers is $\R$. Consider the following statements:
+            \begin{align}
+                \text{There exists a real number $a$ where for any real number $x$, $ax = x$.}
+                \\
+                \text{There exists a real number $b$ where for a any real number $x$, $bx = b$.}
+            \end{align}
+            Can you rewrite these statements with quantifiers? Are these statements true? If so, what are $a$ and $b$?
+        \end{exercise}
+        
+        \begin{exercise}
+            Consider the following statement:
+            \begin{align}
+                \lim_{x \to p} f(x) = L
+                \iff
+                \bigg(
+                \forall \epsilon > 0, \ 
+                \exists \delta > 0, \
+                | x - p | < \delta \implies | f(x) - L | < \epsilon
+                \bigg)
+                .
+            \end{align}
+            This is called the \textbf{epsilon-delta definition} of limit. Can you restate the definition in words? Can you interpret what it means?
+        \end{exercise}
+        
+    
+    \subsection{Conditional and biconditional statements}
+    
+        \begin{exercise}
+            Show that $P \implies Q$ is logically equivalent to $\neg P \lor (P \land Q)$.
+        \end{exercise}
+        \begin{exercise}
+            Express $P \iff Q$ as negations, conjunctions, and disjunctions of $P$ and $Q$.
+        \end{exercise}
+        
+        
+        \newpage
+        
+        \begin{exercise}
+            Which of the following statements are true?
+            \begin{multicols}{2}
+                \begin{enumerate}
+                    \item
+                    $x < 3 \implies x \le 4$
+                    
+                    \item
+                    $x < 3 \impliedby x \le 4$
+                    
+                    \item
+                    $x > y \implies x \ge y$
+                    
+                    \item
+                    $x > y \impliedby x \ge y$
+                    
+                    \item
+                    $[(P \implies Q) \land (\neg P)] \implies  (Q \equiv T)$
+                    
+                    \item
+                    $[(P \implies Q) \land (\neg P)] \implies  Q$
+                    
+                    \item
+                    $[(P \implies Q) \land P] \implies Q$
+                    
+                    % \item
+                    % $(|x| < y) \land (y > 0) \iff (x > -y) \land (x < y)$
+                    
+                    % \item
+                    % $(|x| < y) \land (y > 0) \iff (x > -y) \lor (x < y)$
+                    
+                    % \item
+                    % $(|x| > y) \land (y > 0) \iff (x > y) \land (x < -y)$
+                    
+                    % \item
+                    % $(|x| > y) \land (y > 0) \iff (x > y) \lor (x < -y)$
+                \end{enumerate}
+            \end{multicols}
+        \end{exercise}
+    
+    
+    \subsection{Tautology}
+    
+        \begin{exercise}
+            Is each of the following a tautology, contradiction, or neither?
+            \begin{multicols}{2}
+                \begin{enumerate}
+                    \item
+                    $(x < 0) \lor (x > 0)$
+                    
+                    \item
+                    $(x < 0) \land (x > 0)$
+                    
+                    \item
+                    $(x < y) \land (x \ge y)$
+                    
+                    \item
+                    $[(P \implies Q) \land (\neg Q)] \implies  \neg P$
+                    
+                    \item
+                    $[(P \lor Q) \land (\neg Q)] \implies  \neg P$
+                    
+                    \item
+                    $(P \land Q) \iff Q$
+                    
+                    \item
+                    $Q \iff (P \lor Q)$
+                    
+                \end{enumerate}
+            \end{multicols}
+            
+        \end{exercise}
+        
+        \textbox{
+        \textbf{Solution \theexercise.}
+        \begin{multicols}{2}
+                \begin{enumerate}
+                    \item
+                    $(x < 0) \lor (x > 0)$. Neither, since $x = 0$ is also possible.
+                    
+                    \item
+                    $(x < 0) \land (x > 0)$. Contradiction, since $x$ cannot be greater and less than 0.
+                    
+                    \item
+                    $(x < y) \land (x \ge y)$. Tautology.
+                    
+                    \item
+                    $[(P \implies Q) \land (\neg Q)] \implies  \neg P$. Tautology.
+                    
+                    \item
+                    $[(P \lor Q) \land (\neg Q)] \implies  \neg P$.  Contradiction, since $[(P \lor Q) \land (\neg Q)] \implies  P$.
+                    
+                    \item
+                    $(P \land Q) \iff Q$. Neither, since the conditional is true but not the converse.
+                    
+                    \item
+                    $Q \iff (P \lor Q)$. Neither, since the conditional is also true but not the converse.
+                    
+                \end{enumerate}
+            \end{multicols}
+            }
+        
+        \begin{exercise}
+            Verify that the following statements are tautologies.
+            
+            \begin{multicols}{2}
+            \begin{enumerate}
+                \item
+                $P \iff \neg (\neg P)$
+                % Double negation
+                
+                \item 
+                $P \lor Q  \iff \neg (\neg P \land \neg Q)$
+                % De Morgan's law
+                
+                \item
+                $P \land Q \iff \neg (\neg P \lor \neg Q)$
+                % De Morgan's law
+                
+                \item\label{eqn:contraposition}
+                $(P \implies Q) \iff (\neg Q \implies \neg P)$
+                % Contraposition
+                
+                \item \label{eqn:contradiction}
+                $P \iff (\neg P \implies Q) \land (\neg P \implies \neg Q)$
+                % Reductio ad absurdum
+                
+                \item
+                $((A \implies B) \land (B \implies C)) \implies (A \implies C)$
+                % Syllogism
+                
+                \item\label{eqn:pf-cases}
+                $[(A \lor B) \land (A \implies C) \lor (B \implies C)] \implies C$
+                % proof by cases
+
+            \end{enumerate}
+            \end{multicols}
+            
+        \end{exercise}
+        
+    % \newpage
+    \section{Proof Techniques}
+        
+        
+    \subsection{Direct proof}
+    
+        \textbox{
+        \begin{definition}[Odd integer]
+            An integer $x$ is odd $\iff$ there exists an integer $y$ where $x = 2y + 1$.
+        \end{definition}
+        
+        \begin{definition}[Even integer]
+            An integer $x$ is even $\iff$ there exists an integer $y$ where $x = 2y$.
+        \end{definition}
+        }
+    
+        \begin{exercise}\label{prop:even-prod}
+            Prove that if $x$ is an even integer, then $x y$ is even for any integer $y$.
+        \end{exercise}
+        
+        \begin{exercise}
+            Prove that if $x$ is an odd integer, then $x^3$ is odd.
+        \end{exercise}
+        
+    \subsection{Proof by cases}
+    
+        \begin{exercise}
+            Prove that $|x| \ge y \implies (x \le -y) \lor (x \ge y)$.
+        \end{exercise}
+        
+        \begin{exercise}\label{prop:even-sum}
+            Prove that if $x, y$ are either both even or both odd, then $x + y$ is even.
+        \end{exercise}
+        
+        \begin{exercise}\label{prop:odd-sum}
+            Prove that if $x, y$ are not both even or both odd, then $x + y$ is odd.
+        \end{exercise}
+        
+
+    \subsection{Proof by contrapositive}
+    
+        \textbox{
+        \begin{definition}[Informal]
+            The derivative of a function $f(x)$ at $x$ can be approximated as
+            \begin{align}
+                f'(x)
+                \simeq \frac{f(x + dx) - f(x)}{dx}
+                \simeq \frac{f(x) - f(x - dx)}{dx},
+                \ dx > 0.
+            \end{align}
+            Assume these approximations hold as equalities for an (infinitesimally) small $dx > 0$.
+        \end{definition}
+        }
+        
+        \begin{exercise}
+            Prove that for a differentiable function $f(x)$, if $f(x^*)$ is the minimum, then $f'(x^*) = 0$.
+        \end{exercise}
+        
+        \begin{exercise}
+            Prove that for any real numbers $x$ and $y$, if $y^3 + yx^2 \le x^3 + xy^2$, then $y \le x$.
+        \end{exercise}
+        
+    \subsection{Proof by contradiction}
+        
+        \textbox{
+        \begin{definition}[Rationality]
+            A number $q$ is \textbf{rational} if it can be expressed as a quotient of two integers without common denominators.
+            \begin{align}
+                q \in \Q
+                \iff
+                \exists\ m, n \in \Z,\ 
+                q = \frac{m}{n}.
+            \end{align}
+            
+            If $q \in \R$ and $q$ is not rational, then it is \textbf{irrational}.
+        \end{definition}
+        }
+        
+        \begin{exercise}
+            Prove that there are infinitely many natural numbers, supposing that the following statements are true about $\N$, the set of all natural numbers.
+            \begin{enumerate}
+                \item Zero is a natural number.
+                
+                \item $\forall n \in \N$, $n + 1$ exists and is a natural number.
+                
+                \item $\forall n \in \N$, $n+1 \ne 0$.
+                
+                \item $\forall n, m \in N$, if $n \ne m$, then $n + 1 \ne m + 1$.
+            \end{enumerate}
+        \end{exercise}
+        
+        \begin{exercise}
+            Prove that there is no smallest positive rational number.
+        \end{exercise}
+        
+        \begin{exercise}
+            Prove that $\sqrt{3}$ is irrational.
+        \end{exercise}
+        
+        % \begin{exercise}
+        %     Prove that $\sqrt[3]{2}$ is irrational.
+        % \end{exercise}
+        
+        \begin{exercise}
+            For $n \in \N,\ n > 1$, show that if $p$ is prime, then $\sqrt[n]{p}$ is irrational.
+        \end{exercise}
+        
+    \subsection{Proof by induction}
+    
+        
+        \textbox{
+        \begin{definition}[Fibonacci]
+            The Fibonacci sequence $\{F_n\}_1^\infty$ follows $F_1 = 1,\ F_2 = 2,$ and for $n > 2$,
+            \begin{align}
+                F_{n} = F_{n-2} + F_{n-1}
+            \end{align}
+        \end{definition}
+        }
+
+        
+        \begin{exercise}
+            Show by induction that for any $n \ge 1$ and any $x \in \R$,
+            \begin{align}
+                \sum_{m=0}^n x = n x.
+            \end{align}
+        \end{exercise}
+        
+        \begin{exercise}
+            Show that for any $r \ne 1$,
+            \begin{align}
+                \sum_{m=0}^n r^m = \frac{1 - r^{n+1}}{1 - r}.
+            \end{align}
+        \end{exercise}
+        
+        \begin{exercise}
+            Show that for any $n \ge 1$ and any $x \in \R$,
+            \begin{align}
+                \sum_{m=0}^n m^2 = \frac{n(n-1)(2n-1)}{6}.
+            \end{align}
+        \end{exercise}
+        
+        % \begin{exercise}
+        %     Show that
+        %     \begin{align}
+        %         \exists x \in X, P(x)
+        %         &\implies
+        %         \neg (\forall x \in X, \neg P(x)),
+        %         \\
+        %         \forall x \in X, P(x)
+        %         &\implies
+        %         \neg (\exists x \in X, \neg P(x)).
+        %     \end{align}
+        % \end{exercise}
+        
+        \begin{exercise}
+            Prove the binomial theorem, that for any natural $n \ge 0$,
+            \begin{align}
+                (x + y)^n
+                &= \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k,\quad
+                \text{where}\quad
+                \binom{n}{k} = \frac{n!}{k! (n-k)!}.
+            \end{align}
+        \end{exercise}
+        
+        
+\end{document}

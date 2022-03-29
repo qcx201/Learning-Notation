@@ -1,0 +1,95 @@
+\documentclass{article}[12pt]
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm} % math symbols
+\usepackage{hyperref} % hyperlinks
+\usepackage[table]{xcolor} % tables
+\usepackage{graphicx}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    pdfborderstyle={/S/U/W 1}
+    }
+
+% title
+\title{Learning Notation: Seminar x \\ Probability Primer}
+\author{}
+\date{}
+    
+% paragraph /indent spacing
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% mathtools equation numbering
+\counterwithin*{equation}{section}
+\renewcommand\theequation{\thesection.\arabic{equation}}
+
+% amsthm theorems formatting
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{conjecture}{Conjecture}
+
+\newtheorem{proposition}{Proposition}
+
+\newtheorem{definition}{Definition}
+
+\newtheorem{paradox}{Paradox}
+
+\newtheorem{exercise}{Exercise}
+
+% special symbols
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PS}{\mathcal{P}}
+
+% text box for definitions and theorems
+\newcommand{\textbox}[1]{\fbox{\parbox{\textwidth}{#1}}}
+
+% bibliography formatting
+\makeatletter
+\renewcommand{\@biblabel}[1]{$\triangleright$}
+\makeatother
+
+% Resources
+% https://www.youtube.com/watch?v=RjPXfUT7Odo
+% https://www.youtube.com/watch?v=Q9KOeP-nrYQ
+
+
+\begin{document}
+
+    \maketitle
+    
+    \section{Probability Space}
+    % Measure space
+    % Events, prob space, and prob measure
+    % Impossbility theorem https://www.youtube.com/watch?v=Q9KOeP-nrYQ
+    % Banach-Tarski paradox
+    % Borel sets
+    
+    \section{Random Variables}
+    % Definition and types of RVs
+    % PDF, PMF, and CDFs
+    
+    \section{Expectation and Moments}
+    % Integration
+    % Expectation
+    % Moments of RV
+    
+    \section{Characteristic Functions}
+    % Moment-generating functions
+    % Characteristic functions
+    
+    \section{Law of Large Numbers}
+    % Proof of Weak LLN
+    
+    \section{Central Limit Theorem}
+    % Proof of CLT 
+    
+\end{document}
