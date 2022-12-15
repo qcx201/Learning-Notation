@@ -10,7 +10,7 @@ Past seminars:
 (Hopefully) future seminars:
 * Abstract algebra
 * Real analysis
-* Probability theory (measure theory)
+* Probability (measure theory)
 * Differential equations
 * Combinatorics
 * Incompleteness theorems
