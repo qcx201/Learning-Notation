@@ -6,7 +6,7 @@ Past seminars:
 * logic and proof techniques
 * set theory
 
-Future seminars (hopefully):
+(Hopefully) future seminars:
 * abstract algebra
 * real analysis
 * probabiltiy theory
