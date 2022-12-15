@@ -3,7 +3,7 @@ Repository for Learning Notation mathematics seminars with the Pareto Uppsala Ec
 
 ### Topics
 Past seminars:
-* [$\LaTeX{}$ tutorial](https://github.com/qcx201/Learning-Notation/blob/master/pdfs/0-intro.pdf)
+* $\LaTeX{}$ [tutorial](https://github.com/qcx201/Learning-Notation/blob/master/pdfs/0-intro.pdf)
 * [Logic and proof techniques](https://github.com/qcx201/Learning-Notation/blob/master/pdfs/1-proofs.pdf)
 * [Set theory](https://github.com/qcx201/Learning-Notation/blob/master/pdfs/2-sets.pdf)
 
