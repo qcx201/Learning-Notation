@@ -14,4 +14,9 @@ Potential future seminars:
 * incompleteness theorems
 
 PDF notes: https://github.com/qcx201/Learning-Notation/tree/master/pdfs
+
+Discord: [academic year 2022](https://discord.gg/GN32mnXfYK) [academic year 2021](https://discord.gg/kzAKtGvxyQ)
+
 Pareto: https://www.facebook.com/ParetoUppsala
+
+Python workshop repo: https://github.com/qcx201/ParetoPy
