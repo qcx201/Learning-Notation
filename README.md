@@ -3,16 +3,17 @@ Repository for Learning Notation mathematics seminars with the Pareto Uppsala Ec
 
 ### Topics
 Past seminars:
-* logic and proof techniques
-* set theory
+* $\LaTeX{}$ tutorial
+* Logic and proof techniques
+* Set theory
 
 (Hopefully) future seminars:
-* abstract algebra
-* real analysis
-* probabiltiy theory
-* differential equations
-* combinatorics
-* incompleteness theorems
+* Abstract algebra
+* Real analysis
+* Probabiltiy theory
+* Differential equations
+* Combinatorics
+* Incompleteness theorems
 
 ### Links
 PDF notes: https://github.com/qcx201/Learning-Notation/tree/master/pdfs
